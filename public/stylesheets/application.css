@@ -1,3 +1,54 @@
+body {
+	}
+	
+#Content {
+	width:860px;
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+  	background-color: #303030;		
+}
+
+
+body {
+  margin:50px 0px; padding:0px;
+  text-align:center;
+  background: black;
+}
+
+.titlebar {
+  background-color: #AA0000;	
+  padding-left: 1em;
+}
+
+h1.title {
+  color: #FFFF00;	
+  font-family: "Myriad Pro", Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 3em;
+}
+    
+h2.author {
+  color: #CCCC00;		
+  font-family: "Myriad Pro", Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+div.content_area {
+  font-family: "Lucida Grande", Verdana, Geneva, Helvetica, sans-serif;
+  font-size: 0.8em;	
+  color: white;
+}
+
+div.admin {
+  border: 1 solid black;
+  background-color: gray;
+}
+
+div.user {
+  border: 1 solid black;
+  background-color: silver;
+}
+
 ul.menu {
   list-style: none;	
   margin: 0 0 2em;
@@ -6,8 +57,11 @@ ul.menu {
 }
 
 ul.menu li {
-  /*position: relative;*/
   display: inline;  
+}
+
+ul.menu li a {
+  color: #FFFF00;
 }
 
 .entry {

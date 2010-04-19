@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController    
+
   before_filter do
     @post = Post.find_by_id params[:post_id]
   end

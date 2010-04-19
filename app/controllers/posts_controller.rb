@@ -1,16 +1,20 @@
 class PostsController < ApplicationController        
   respond_to :html, :atom
 
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_admin!, :except => [:index, :show]
+  before_filter :get_post, :only => [:show, :edit, :update, :destroy]
+
+  def get_post
+    @post = Post.find_by_id(params[:id])
+  end
 
   def index
-    @posts = Post.order('created_at desc')
+    @posts = Post.latest_published
     puts @posts
     respond_with @posts
   end
 
-  def show
-    @post = Post.find_by_id(params[:id])
+  def show    
     respond_with @post
   end
 
@@ -28,11 +32,9 @@ class PostsController < ApplicationController
   end
   
   def edit
-    @post = Post.find_by_id(params[:id])
   end   
   
   def update
-    @post = Post.find_by_id(params[:id])    
     if @post.update_attributes(params[:post])
       redirect_to posts_path    
     else
@@ -41,8 +43,7 @@ class PostsController < ApplicationController
   end
   
   def destroy
-    post = Post.find_by_id(params[:id])        
-    post.destroy
-    redirect_to posts_path, :notice => "#{post.title} was deleted"        
+    @post.destroy
+    redirect_to posts_path, :notice => "#{@post.title} was deleted"        
   end
 end

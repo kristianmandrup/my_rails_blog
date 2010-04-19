@@ -2,25 +2,30 @@
 <html>
 <head>
   <title>MyBlog</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'scaffold', 'application', 'coderay' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %> 
   <%= auto_discovery_link_tag :atom, posts_path(:atom) %>
 </head>
 <body>
-<div class="notice">
-  <%= flash[:notice] %>
-</div>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<ul class="menu">
-<%= render 'devise/menu/registration_items' %>
-<%= render 'devise/menu/login_items' %>
-</ul>
-
-<%= yield %>
-
+  <div id="Content">
+    <div class="titlebar">
+      <h1 class="title">Rails on Fire</h1>
+      <h2 class="author">Kristian Mandrup</h2>     
+    </div>
+    <div class="content_area">
+      <div class="noticebar">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>  
+      <!-- only show login menu bar if run from localhost -->
+      <% localhost do %>
+        <ul class="menu">
+        <%= render 'devise/menu/admin_login_items' %>
+        </ul>
+      <% end %>  
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

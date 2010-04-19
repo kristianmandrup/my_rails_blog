@@ -8,6 +8,8 @@ MyBlog::Application.routes.draw do |map|
 
   root :to => "posts#index"
 
+   match "/secret" => "posts#about", :constraints => { :host => /localhost/ }  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

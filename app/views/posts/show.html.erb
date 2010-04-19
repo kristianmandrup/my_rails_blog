@@ -1,10 +1,13 @@
 <h1><%= @post.title%></h1>
 <div class="entry">
-  <%= @post.body %>
+  <%= textile(coderay(@post.body)) %>
 </div>  
 <p>
+  <% admin do %>
   <%= link_to 'Edit', [:edit, @post] %>
+  <% end %>
 </p>   
+
 <p>
   <%= link_to 'All posts', posts_path %>
 </p>   
